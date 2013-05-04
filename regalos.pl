@@ -8,9 +8,17 @@ nino(adrian,8,costa_rica,[comparte,regala],[pelea,roba],[barby,oso,ropa],5000).
 nino(julian,9,costa_rica,[comparte,regala,perdona],[pelea],[play3,helicoptero,pistola],5000).
 nino(eduardo,10,costa_rica,[comparte,regala,perdona],[pelea],[trompo,perro,compu],5000).
 juguete([peluche,play3,trompo,carro,compu,xbox,ropa,helicoptero,perro,pistola,muñeca,barby,oso]).
+<<<<<<< HEAD
 /*-----------------------------------------------------------------------------*/
 
 /*Devuelve true si Ac se encuentra en la lista recibida | busca([lista],Ac). */
+=======
+nino(maria,9,costa_rica,[comparte,regala],[pelea,roba],[barby,perro,peluche,play3],5000).
+
+/*-----------------------------------------------------------------------------*/
+
+/*Devuelve true si Ac se encuentra en la lista recibida | busca([lista],Ac).*/
+>>>>>>> 2588a2ea76fccade46702c326fa1e6a1c223e9f0
 busca([],Ac):-fail.
 busca([H|T],Ac):-H=Ac,!.
 busca([H|T],Ac):-busca(T,Ac).
@@ -27,12 +35,35 @@ listaRecord(R):-juguete(Z),contarJuguete(Z,[],R).
 contarJuguete([],ListaTotal,R):-R=ListaTotal,!.
 contarJuguete([H|T],ListaNueva,R):-regalo(H,Result),largoLista(Result,0,Total),contarJuguete(T,[[H,Total]|ListaNueva],R).
 
+<<<<<<< HEAD
 /*Algoritmo de ordenamiento de prolog*/
 
 
+=======
+%Algoritmo_de_ordenamiento_de_listas
+>>>>>>> 2588a2ea76fccade46702c326fa1e6a1c223e9f0
 ordena([],[]):-!.
 ordena([H|T],S):-ordena(T,R),inserta(H,R,S),!.
 inserta(X,[],[X]).
 inserta(X,[H|T],[X,H|T]):-X>=H,!.
 inserta(X,[H|T],[H|S]):-inserta(X,T,S).
+<<<<<<< HEAD
 
+=======
+ 
+%Concatenar_Listas
+concatenar([],L,L). 
+concatenar([X|L1],L2,[X|L3]):-concatenar(L1,L2,L3).
+
+%borrar
+borrar([],_[]):-!.
+borrar([H|T],H,R):-borrar(T,H,R),!.
+borrar([H|T],X,[H|S]):-borrar(T,X,S),!.
+
+%Algoritmo_de_ordenamiento_para_el_programa
+ordena2([],[]):-!.
+ordena2([H|T],S):-ordena2(T,R),inserta2(H,R,S),!.
+inserta2(X,[],[X]).
+inserta2([C|X],[[J|H]|T],[[C|X],[J|H]|T]):-X>=H,!.
+inserta2([C|X],[[J|H]|T],[[J|H]|S]):-inserta2([C|X],T,S).
+>>>>>>> 2588a2ea76fccade46702c326fa1e6a1c223e9f0
