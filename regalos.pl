@@ -29,21 +29,18 @@ listaRecord(R):-juguete(Z),contarJuguete(Z,[],R).
 contarJuguete([],ListaTotal,R):-R=ListaTotal,!.
 contarJuguete([H|T],ListaNueva,R):-regalo(H,Result),largoLista(Result,0,Total),contarJuguete(T,[[H,Total]|ListaNueva],R).
 
-%Algoritmo_de_ordenamiento_de_listas
+%Algoritmo_de_ordenamiento_de_listas_simples.
 ordena([],[]):-!.
 ordena([H|T],S):-ordena(T,R),inserta(H,R,S),!.
 inserta(X,[],[X]).
 inserta(X,[H|T],[X,H|T]):-X>=H,!.
 inserta(X,[H|T],[H|S]):-inserta(X,T,S).
- 
+	
 %Concatenar_Listas
 concatenar([],L,L). 
 concatenar([X|L1],L2,[X|L3]):-concatenar(L1,L2,L3).
 
-%borrar
-borrar([],_[]):-!.
-borrar([H|T],H,R):-borrar(T,H,R),!.
-borrar([H|T],X,[H|S]):-borrar(T,X,S),!.
+recordRegalos(R):-listaRecord(Z),ordena2(Z,R).
 
 %Algoritmo_de_ordenamiento_para_el_programa
 ordena2([],[]):-!.
