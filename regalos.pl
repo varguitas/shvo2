@@ -37,8 +37,8 @@ inserta(X,[H|T],[X,H|T]):-X>=H,!.
 inserta(X,[H|T],[H|S]):-inserta(X,T,S).
 	
 %Concatenar_Listas
-concatenar([],L,L). 
-concatenar([X|L1],L2,[X|L3]):-concatenar(L1,L2,L3).
+/*concatenar([],L,L). 
+concatenar([X|L1],L2,[X|L3]):-concatenar(L1,L2,L3).*/
 
 recordRegalos(R):-listaRecord(Z),ordena2(Z,R).
 
