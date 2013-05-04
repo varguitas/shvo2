@@ -36,29 +36,34 @@ contarJuguete([],ListaTotal,R):-R=ListaTotal,!.
 contarJuguete([H|T],ListaNueva,R):-regalo(H,Result),largoLista(Result,0,Total),contarJuguete(T,[[H,Total]|ListaNueva],R).
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*Algoritmo de ordenamiento de prolog*/
 
 
 =======
 %Algoritmo_de_ordenamiento_de_listas
 >>>>>>> 2588a2ea76fccade46702c326fa1e6a1c223e9f0
+=======
+%Algoritmo_de_ordenamiento_de_listas_simples.
+>>>>>>> 80c124df1a5e21da850f40db275d89d5c07e29d4
 ordena([],[]):-!.
 ordena([H|T],S):-ordena(T,R),inserta(H,R,S),!.
 inserta(X,[],[X]).
 inserta(X,[H|T],[X,H|T]):-X>=H,!.
 inserta(X,[H|T],[H|S]):-inserta(X,T,S).
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
  
+=======
+	
+>>>>>>> 80c124df1a5e21da850f40db275d89d5c07e29d4
 %Concatenar_Listas
 concatenar([],L,L). 
 concatenar([X|L1],L2,[X|L3]):-concatenar(L1,L2,L3).
 
-%borrar
-borrar([],_[]):-!.
-borrar([H|T],H,R):-borrar(T,H,R),!.
-borrar([H|T],X,[H|S]):-borrar(T,X,S),!.
+recordRegalos(R):-listaRecord(Z),ordena2(Z,R).
 
 %Algoritmo_de_ordenamiento_para_el_programa
 ordena2([],[]):-!.
