@@ -5,7 +5,6 @@ import java.io.FileReader;
  */
 import alice.tuprolog.*; //Librería de incorporación de motor de Prolog al programa
 import java.io.*; //Librería de entrada y salida de Java
-import java.util.StringTokenizer;
 
 //Clase para prueba de conexión
 public class recordRegalos {
@@ -52,7 +51,7 @@ public class recordRegalos {
         //System.out.println(BC);
         Prolog engine = new Prolog(); //Inicio el motor de prolog al cual llamamos "engine" 
         engine.setTheory(new Theory(BC));
-        Term consulta = Term.createTerm("listaRecord(X)"); //Creamos un termino paraa hacer la consulta
+        Term consulta = Term.createTerm("recordRegalos(X)"); //Creamos un termino paraa hacer la consulta
         SolveInfo info=engine.solve(consulta);//trata de resolver la consulta que le realicemos
         if(info.isSuccess()){ //Si la consulta tiene éxito ->
             //Term solution = info.getSolution(); //"solution" de tipo Term, almacena la solución de la consulta
