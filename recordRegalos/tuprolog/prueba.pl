@@ -12,6 +12,7 @@ nino(maria,9,costa_rica,[comparte,regala],[pelea,roba],[barby,perro,compu,peluch
 
 /*-----------------------------------------------------------------------------*/
 
+
 /*Devuelve true si Ac se encuentra en la lista recibida | busca([lista],Ac).*/
 busca([],Ac):-fail.
 busca([H|T],Ac):-H=Ac,!.
@@ -29,12 +30,12 @@ listaRecord(R):-juguete(Z),contarJuguete(Z,[],R).
 contarJuguete([],ListaTotal,R):-R=ListaTotal,!.
 contarJuguete([H|T],ListaNueva,R):-regalo(H,Result),largoLista(Result,0,Total),contarJuguete(T,[[H,Total]|ListaNueva],R).
 
-recordRegalos(R):-listaRecord(Z),ordena(Z,R).
-
 /* Ordena la lista de los juguetes de mayor a menor con la lista que fue generada anteriormente en listaRecord(R). */
 ordena([],[]):-!.
 ordena([H|T],S):-ordena(T,R),inserta(H,R,S).
 inserta(X,[],[X]):-!.
 inserta([C|X],[[J|H]|T],[[C|X],[J|H]|T]):-X>=H,!.
 inserta([C|X],[[J|H]|T],[[J|H]|S]):-inserta([C|X],T,S).
+
+recordRegalos(R):-listaRecord(Z),ordena(Z,R).
 

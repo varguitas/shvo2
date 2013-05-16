@@ -7,7 +7,7 @@ nino(jose,6,costa_rica,[comparte,regala,perdona],[pelea],[peluche,play3,carro,os
 nino(adrian,8,costa_rica,[comparte,regala],[pelea,roba],[barby,oso,ropa],5000).
 nino(julian,9,costa_rica,[comparte,regala,perdona],[pelea],[play3,helicoptero,pistola],5000).
 nino(eduardo,10,costa_rica,[comparte,regala,perdona],[pelea],[trompo,perro,compu],5000).
-juguete([peluche,play3,trompo,carro,compu,xbox,ropa,helicoptero,perro,pistola,muñeca,barby,oso]).
+juguete([peluche,play3,trompo,carro,compu,xbox,ropa,helicoptero,perro,pistola,muneca,barby,oso]).
 nino(maria,9,costa_rica,[comparte,regala],[pelea,roba],[barby,perro,peluche,play3],5000).
 
 /*-----------------------------------------------------------------------------*/
@@ -48,3 +48,5 @@ ordena2([H|T],S):-ordena2(T,R),inserta2(H,R,S),!.
 inserta2(X,[],[X]).
 inserta2([C|X],[[J|H]|T],[[C|X],[J|H]|T]):-X>=H,!.
 inserta2([C|X],[[J|H]|T],[[J|H]|S]):-inserta2([C|X],T,S).
+
+

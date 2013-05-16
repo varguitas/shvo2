@@ -5,6 +5,7 @@ import java.io.FileReader;
  */
 import alice.tuprolog.*; //Librería de incorporación de motor de Prolog al programa
 import java.io.*; //Librería de entrada y salida de Java
+import java.util.StringTokenizer;
 
 //Clase para prueba de conexión
 public class recordRegalos {
@@ -43,25 +44,56 @@ public class recordRegalos {
         return null;
     }
     public static void main(String [] args) throws Exception{ //Main
-        String BC = leerArchivo("prueba.pl"); //Variable BC almacena la base de conocimientos
+        String record=recordRegalos();
+        System.out.println(record);
+    }
+    public static String recordRegalos() throws Exception{
+        String BC = leerArchivo("base.pl"); //Variable BC almacena la base de conocimientos
         //System.out.println(BC);
         Prolog engine = new Prolog(); //Inicio el motor de prolog al cual llamamos "engine" 
-        engine.setTheory(new Theory(BC)); //Cargamos la BC al motor de prolog
-        SolveInfo info=engine.solve("recordRegalos(X). "); //trata de resolver la consulta que le realicemos
+        engine.setTheory(new Theory(BC));
+        Term consulta = Term.createTerm("listaRecord(X)"); //Creamos un termino paraa hacer la consulta
+        SolveInfo info=engine.solve(consulta);//trata de resolver la consulta que le realicemos
         if(info.isSuccess()){ //Si la consulta tiene éxito ->
             //Term solution = info.getSolution(); //"solution" de tipo Term, almacena la solución de la consulta
-            Term result = info.getVarValue("X");//"result" de tipo Term, almacena el valor de la Variable X de la anterior consulta
-            String resultado=result.toString();//"resultado" almacena el String del valor de "result" que es de tipo Term
-            System.out.println(resultado);
+            Term result = info.getTerm("X");//"result" de tipo Term, almacena el valor de la Variable X de la anterior consulta
+            String resultado = result.toString();
+            return resultado;
+            //String resultado=result.toString();//"resultado" almacena el String del valor de "result" que es de tipo Term
+            //System.out.println(resultado);
             //System.out.println(solution);
-      
         }
         else{
-            System.out.println("Error del isSuccess");
+            return "Fail : " + info;
         }
         
     }
-    /*
+    
+    /* Código de Respaldo
+    public static String[] convierte(String respuesta){
+        String str2array=respuesta;
+        //1. First method with split() 
+        // split(String Delimiter)
+        String[] arr=str2array.split(",");
+        System.out.println("Array: "+arr.length);
+        for(int i=0;i<arr.length;i++)
+        {
+            System.out.println("array"+i+"  :"+arr[i]);
+        }
+
+        //2. Second Method of StringTokenizer
+        // StringTokenizer(String str, String delimiter)
+        StringTokenizer stArr=new StringTokenizer(str2array,",");
+
+        while(stArr.hasMoreTokens())
+        {
+            System.out.println("Token: "+stArr.nextToken());
+        }
+        return arr;
+    }
+    
+    
+    
      * public static void main(String [] args) throws Exception{ //Main
         BufferedReader in = new BufferedReader(new FileReader("prueba.pl")); //Se carga el archivo donde está almacenada la BC
         Prolog engine = new Prolog(); 
